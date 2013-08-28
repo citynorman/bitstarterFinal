@@ -131,13 +131,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Bitstarter</a>
+          <a class="brand" href="#">Bitstarter: Share|Connect</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="/orders">Orders</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#Product">Product</a></li>
+              <li><a href="#Team">Team</a></li>
+              <li><a href="#About">About</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -165,9 +165,13 @@
       </div>
       <div class="row-fluid pitch">
         <div class="span5 offset1 video">
-          <img class="img-polaroid" src="http://linkhedge.com/stanford/pic1.jpg">
+          <img class="img-polaroid" src="pic1.jpg">
         </div>
-
+<% var backers = 0; var bc_sum = 0; %>
+<% for(var i=0; i<orders.length; i++) {%>
+  <% backers = backers + 1 %>
+  <% bc_sum = bc_sum + orders[i].amount %>
+<% } %>
         <!-- We define a new 'actions' div to contain statistics, order, and share buttons.-->
         <div class="span5 actions">
           <div class="row-fluid">
@@ -178,17 +182,17 @@
                 different in horizontal and vertical layouts, illustrating
                 media queries. -->
                 <div class="linediv-l">
-                <h3>1000</h3> <p>backers</p>
+                <h3><%= backers %></h3> <p>backers</p>
                 </div>
               </div>
               <div class="span4">
                 <div class="linediv-c">
-                  <h3>$6000</h3> <p>of $10,000</p>
+                  <h3>$<%= bc_sum*130 %></h3> <p>of $10,000</p>
                 </div>
               </div>
               <div class="span4">
                 <div class="linediv-r">
-                <h3>10</h3> <p>days left</p>
+                <h3 id="countdown">10</h3> <p>days left</p>
                 </div>
               </div>
             </div>
@@ -198,9 +202,9 @@
             <!-- Bootstrap progress bar -->
             <!-- http://twitter.github.io/bootstrap/components.html#progress -->
             <div class="thermometer progress active">
-              <div class="bar bar-success" style="width: 60%;"></div>
-              <div class="bar bar-warning" style="width: 40%;"></div>
-            </div>
+  <div class="bar bar-success" style="width: <%= (bc_sum / 250) * 100 %>%;"></div>
+  <div class="bar bar-warning" style="width: <%= 100 - (bc_sum / 250) * 100 %>%;"></div>
+</div>
           </div>
           </div>
           <div class="row-fluid">
@@ -234,30 +238,42 @@
       <!-- http://placehold.it -->
       <div class="row-fluid section1">
         <div class="span5 offset1 asset">
-          <img class="img-polaroid" src="http://linkhedge.com/stanford/pic2.png">
+          <img class="img-polaroid" src="pic2.png">
         </div>
-        <div class="span5 copy">
+        <div class="span5 copy"><a name="Product"></a> 
           <p>
             <span style="font-weight: bold;">The product:</span> You send a proposal to a potential client, a resume to a potential employer
-            or an interesting file to a friend ... and never get feedback! With Connect|Share, 
+            or an interesting file to a friend...and never get feedback! With Share|Connect, 
             you give the receiver the ability to send you instant messages while they are reviewing
             the document. Whether the potential customer has a question, the employer
             want to discuss your experience or your friend likes to say thanks: you are online to chat with
             them in real-time. Even if they decide not to contact you, at least you will know that they opened
             the document with instant tracking notifications in your account. So much better than having
-            files disappear into the email inbox black hole.
+            files disappear into the email inbox black hole. Express your interest by preordering above or sign up for the newsletter!
           </p>
         </div>
       </div>
 
       <div class="row-fluid section2">
-        <div class="span5 offset1 copy copy-right">
+        <div class="span5 offset1 copy copy-right"><a name="Team"></a> 
           <p>
-            <span style="font-weight: bold;">The team:</span> My name is <a title="Norman Niemer" href="http://www.linkedin.com/in/normanniemer" target="_blank">>Norman Niemer<</a> and I am the founder of Share|Connect. I am currently pursuing a graduate degree in <a title="MSFE" href="http://ieor.columbia.edu/ms-financial-engineering" target="_blank">>financial mathematics<</a> at Columbia University, having previously worked at hedge funds and investment banks. Additionally, I have many years of technology experience. I started programming and during my teenager years and during high-school I founded a technology company where I helped to set up my clients' very first web presence, database and IT systems. I believe I can leverage my expertise in building innovative technology solutions as well as managerial skills to bring this project to a successful completion should there be sufficient interest in this product. Express your interest by preordering above or sign up for the newsletter!
+            <span style="font-weight: bold;">The team:</span> My name is <a title="Norman Niemer" href="http://www.linkedin.com/in/normanniemer" target="_blank">>Norman Niemer<</a> and I am the founder of Share|Connect. I am currently pursuing a graduate degree in <a title="MSFE" href="http://ieor.columbia.edu/ms-financial-engineering" target="_blank">>financial mathematics<</a> at Columbia University and am taking online courses in computer science at Stanford University. I have previously worked at hedge funds and investment banks and additionally have many years of technology experience. I started programming and during my teenager years and during high-school I founded a technology company where I helped to set up my clients' very first web presence, database and IT systems. I believe I can leverage my expertise in building innovative technology solutions as well as managerial skills to bring this project to a successful completion should there be sufficient interest in this product. You can contact me with questions and suggestions at <a href="mailto:citynorman*@*gmail.com" target="_top">citynorman*@*gmail.com</a>
           </p>
         </div>
         <div class="span5 asset">
-          <img class="img-polaroid" src="http://linkhedge.com/stanford/pic3.png">
+          <img class="img-polaroid" src="pic3.png">
+        </div>
+      </div>
+
+      <div class="row-fluid section1">
+        <div class="span5 offset1 asset">
+          <img class="img-polaroid" src="pic2.png">
+        </div>
+        <div class="span5 copy"><a name="About"></a> 
+          <p>
+            <span style="font-weight: bold;">What is all this about:</span> This project is crowdfunded product/market fit test, created for the <a title="Startup Engineering" href="startup.stanford.edu" target="_blank">>Startup Engineering class at Stanford<</a>. The main goal of this website is to test whether there is sufficient interest in this product to evaluate whether I should go ahead and develop it. Put differently, this crowdsourcing project seeks to test
+            potential interest in the Share|Connect product. The money raised goes toward development of the beta product which I estimate to take 6 months, likely quicker if I raise more than the minimum amount. Once complete, you will gain access to the product for 3 months, after which users can continue to use it for a small fee. This is meant to be a low-price/low-cost product.
+          </p>
         </div>
       </div>
 
@@ -272,12 +288,12 @@
                 <div class="accordion-heading">
                   <a class="accordion-toggle" data-toggle="collapse"
                      data-parent="#accordion2" href="#collapseOne">
-                    What does FAQ stand for?
+                    How is the funding goal calculated?
                   </a>
                 </div>
                 <div id="collapseOne" class="accordion-body collapse">
                   <div class="accordion-inner">
-                    Frequently Asked Question.
+                    My estimate for the monthly price of the product is $5/month so by contributing $10 you pay for two months and get one month free to compensate you for having faith in my abilities and taking the risk. I estimate at least 1,000 people would need to be interested in purchasing this product for me to go ahead.
                   </div>
                 </div>
               </div>
@@ -285,16 +301,29 @@
                 <div class="accordion-heading">
                   <a class="accordion-toggle" data-toggle="collapse"
                      data-parent="#accordion2" href="#collapseTwo">
-                    What's a Frequently Asked Question?
+                    What happens with my money?
                   </a>
                 </div>
                 <div id="collapseTwo" class="accordion-body collapse">
                   <div class="accordion-inner">
-                    A question which is commonly asked by users.
+                    Your small contribution is essentially an upfront payment for using the beta version of Share|Connect once it is developed. In return for using an innovative product, you are taking the risk that I might not get it developed. Given my expertise in web development and management, I hope to give give you sufficient comfort that I can bring the project to completion. And if I do not reach the desired funding goal I will refund the money you sent!
                   </div>
                 </div>
               </div>
-            </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse"
+                     data-parent="#accordion3" href="#collapseThree">
+                    Why BitCoin?
+                  </a>
+                </div>
+                <div id="collapseThree" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    Traditionally, crowdfunding happened through well-known platforms such as Kickstarter and indiegogo. Bitcoins allows to crowdfund projects without the need for a platform.
+                  </div>
+                </div>
+              </div>
+              </div>
           </div>
 
       </div>
@@ -321,6 +350,19 @@
   ga('create', 'UA-43370406-1', 'ec2-54-213-32-110.us-west-2.compute.amazonaws.com');
   ga('send', 'pageview');
 
+</script>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+      today = new Date();
+
+      BigDay = new Date("September 09, 2013");
+      msPerDay = 24 * 60 * 60 * 1000 ;
+      timeLeft = (BigDay.getTime() - today.getTime());
+      e_daysLeft = timeLeft / msPerDay;
+      daysLeft = Math.floor(e_daysLeft);
+
+      $("#countdown").text(daysLeft);
+  });
 </script>
   </body>
 </html>
