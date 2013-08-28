@@ -13,10 +13,17 @@ app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || 8080);
 
 // Render homepage (note trailing slash): example.com/
-app.get('/', function(request, response) {
-  var data = fs.readFileSync('index.html').toString();
-  response.send(data);
-});
+global.db.Order.findAll().success(function(orders) {
+    var orders_json = [];
+    orders.forEach(function(order) {
+      orders_json.push({id: order.coinbase_id, amount: order.amount, time: order.time});
+    });
+    // Uses views/orders.ejs
+    response.render("index", {orders: orders_json});
+  }).error(function(err) {
+    console.log(err);
+    response.send("error retrieving orders");
+  });
 
 // Render example.com/orders
 app.get('/orders', function(request, response) {
