@@ -6,7 +6,7 @@ In other words, this code defines how a row in the postgres order table
 maps to the JS Order object.
 */
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define("Order", {
+  return sequelize.define("Orders", {
     coinbase_id: {type: DataTypes.STRING, unique: true, allowNull: false},
     amount: {type: DataTypes.FLOAT},
     time: {type: DataTypes.STRING, allowNull: false}
